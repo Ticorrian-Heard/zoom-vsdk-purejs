@@ -48,8 +48,14 @@ let joinSession = async () => {
 window.onload = () => {
    let session = document.getElementById('session');
    session.addEventListener('click', () => {
-       document.getElementById('UIToolkit').style.display = 'block';
-       joinSession();
+       let toolkit = document.getElementById('UIToolkit');
+       if (toolkit.style.display === 'none') { 
+          toolkit.style.display = 'block';
+          joinSession();
+        }
+        else {
+            window.destroyUIkit();
+        }
    });
    
    let previewBtn = document.getElementById('preview');

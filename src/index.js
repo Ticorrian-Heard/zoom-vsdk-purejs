@@ -55,6 +55,7 @@ window.onload = () => {
         }
         else {
             window.destroyUIkit();
+            toolkit.style.display = 'none';
         }
    });
    

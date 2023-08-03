@@ -1,4 +1,4 @@
-import * as UIToolkit from '@zoom/videosdk-ui-toolkit';
+import '@zoom/videosdk-ui-toolkit';
 import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
 
 let joinSession = async () => {

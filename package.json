@@ -11,11 +11,15 @@
   "license": "ISC",
   "dependencies": {
     "@zoom/videosdk": "^1.8.2",
-    "@zoom/videosdk-ui-toolkit": "^1.8.7",
+    "@zoom/videosdk-ui-toolkit": "^1.8.8",
+    "cors": "^2.8.5",
     "css-loader": "^6.8.1",
+    "express": "^4.18.2",
     "html-webpack-plugin": "^5.5.3",
+    "node-fetch": "^2.6.12",
     "path": "^0.12.7",
     "style-loader": "^3.3.3",
+    "url": "^0.11.1",
     "webpack": "^5.88.2",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.15.1"

@@ -4,7 +4,7 @@ import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
 let joinSession = async () => {
      let token = '';
      let name = 'Ticorrian';
-     let sessionId = 'test';
+     let sessionId = 'test1';
      let password = 'test123';
      
      let url = "https://zoom-comparison-middleware.herokuapp.com/zoomtoken?name=" + name + "&topic=" + sessionId + "&password=" + password;
@@ -36,8 +36,10 @@ let joinSession = async () => {
          cloudRecordingElection: "",
          userName: name,
          sessionPasscode: password,
-         features:  [ "video", "audio", "share", "chat", "settings", "users" ], 
+         features:  [ "video", "audio", "share", "chat", "settings", "users", "roles" ], 
        };
+
+       console.log("config", obj)
      
      let UIToolkitConfig = JSON.stringify(obj);
      let UIKit = document.createElement('app-uitoolkit');

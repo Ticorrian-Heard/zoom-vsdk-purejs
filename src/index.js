@@ -1,5 +1,12 @@
-import '@zoom/videosdk-ui-toolkit';
-import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
+// import '@zoom/videosdk-ui-toolkit';
+// import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
+
+
+let utilityTestCode = () => {
+    console.log("called from utility");
+    document.getElementById('UIToolkit').style.display = 'none';
+    document.getElementById('session').disabled = false;
+}
 
 let joinSession = async () => {
      let token = '';
@@ -7,7 +14,7 @@ let joinSession = async () => {
      let sessionId = 'test1';
      let password = 'test123';
      
-     let url = "https://zoom-comparison-middleware.herokuapp.com/zoomtoken?name=" + name + "&topic=" + sessionId + "&password=" + password;
+     let url = "https://zoom-auth-server-20be414301cf.herokuapp.com/zoomtoken?name=" + name + "&topic=" + sessionId + "&password=" + password;
      let settings = {
          mode: "cors",
          method: 'POST',
@@ -25,7 +32,7 @@ let joinSession = async () => {
      console.log(token);
      
      let obj = {
-         authEndpoint: "https://zoom-comparison-middleware.herokuapp.com/zoomtoken",
+         authEndpoint: "https://zoom-auth-server-20be414301cf.herokuapp.com/zoomtoken",
          sessionName: sessionId,
          videoSDKJWT: token,
          role: 1,
@@ -39,12 +46,15 @@ let joinSession = async () => {
          features:  [ "video", "audio", "share", "chat", "settings", "users", "roles" ], 
        };
 
-       console.log("config", obj)
+     console.log("config", obj)
      
-     let UIToolkitConfig = JSON.stringify(obj);
      let UIKit = document.createElement('app-uitoolkit');
-     UIKit.setAttribute("uitoolkitconfig", UIToolkitConfig);
      document.getElementById('UIToolkit')?.append(UIKit);
+     window.initUIToolKit(obj);
+     window.UIkitSubscribe("uitoolkit-destroy", () => {
+      utilityTestCode();
+     });
+     window.joinSession();
 }
 
 window.onload = () => {
@@ -53,11 +63,8 @@ window.onload = () => {
        let toolkit = document.getElementById('UIToolkit');
        if (toolkit.style.display === 'none') { 
           toolkit.style.display = 'block';
+          session.disabled = true;
           joinSession();
-        }
-        else {
-            window.destroyUIkit();
-            toolkit.style.display = 'none';
         }
    });
    

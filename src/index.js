@@ -1,5 +1,5 @@
-// import '@zoom/videosdk-ui-toolkit';
-// import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
+import '@zoom/videosdk-ui-toolkit';
+import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
 
 
 let utilityTestCode = () => {

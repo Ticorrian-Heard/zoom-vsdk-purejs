@@ -11,6 +11,9 @@ let utilityTestCode = () => {
 }
 
 let joinSession = async () => {
+
+     console.log("SharedArrayBuffer:", crossOriginIsolated);
+
      let token = '';
      let name = 'Ticorrian';
      let sessionId = 'test1';

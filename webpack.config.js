@@ -8,6 +8,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'static'),
+    publicPath: "/",
     filename: '[name].min.js'
   },
   module: {
@@ -24,13 +25,18 @@ module.exports = {
   mode: 'development',
 
   devServer: {
-    port: 3000,
+    static: {
+      directory: path.join(__dirname, '/'), 
+    },
+    open: true,
+    port: 3007,
     hot: true,
-    historyApiFallback: false, 
+    historyApiFallback: true, 
     headers: {
-      'Cross-Origin-Embedder-Policy': 'require-corp',
-      'Cross-Origin-Opener-Policy': 'same-origin'
-    }
+    //   'Cross-Origin-Embedder-Policy': 'require-corp',
+    //   'Cross-Origin-Opener-Policy': 'same-origin'
+    'Cache-Control': 'no-store',
+    },
   },
   
   plugins: [
